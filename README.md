@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Naval Battle Game API
 
 This game is based on the classic "naval battle".
@@ -24,3 +25,8 @@ docker >= 20.10.12
 docker-compose >= 1.29.2
 
 To run the whole infrastructure:
+=======
+# naval_battle
+
+Remember to write the readme plz !
+>>>>>>> 5a29d42 (naval battle)
