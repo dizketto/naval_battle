@@ -124,6 +124,9 @@ You can check the user scores chart using the `/v1/scores` endpoint.
 ![scores](https://user-images.githubusercontent.com/58236349/177288260-ee7ce55e-86f7-40cd-98ee-525682745ed4.png)
 
 
+## TODO
+
+A dedicated client would be worth to implement, based on Redis pub/sub to receive events and information about the game being played.
 
 
 
