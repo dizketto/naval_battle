@@ -43,7 +43,7 @@ To run the whole infrastructure you can use the Makefile with one of its targets
 
 To use each endpoint, click on the endpoint and then on the `Try it out` button, you can add the parameters of the request directly in the swagger and then click on the `EXECUTE` button, to send the request. 
 
-# Authentication
+### Authentication
 
 First of all an user will sign up to the service through the `/v1/user/signup` endpoint. 
 After sending the request, if the data is consistent, you will get an access_token (all the part of sending confirmation email, is not present in the service for conveniency).
@@ -56,7 +56,7 @@ To use the access token, you can copy the "access_token" value in the response, 
 ![Authorize](https://user-images.githubusercontent.com/58236349/177282254-b0692ffb-fff3-4751-9116-428da15fe8a4.png)
 
 
-# Creating and joining games
+### Creating and joining games
 With this access token you can either create or join a game. If there is no other game created, you can't join other games.
 Joining a game means that you will request to join any game that still allows players in.
 If a joinable game is found, then you will get the access token to play in that game.
@@ -67,7 +67,7 @@ Once all the players have joined the game is closed for joining.
 
 Once a game is created or joined, it will give back a new Access Token. This is the Access Token to be used to play uniquely that game.
 
-# Playing the game
+### Playing the game
 Once again, use the access token obtained from joining or creating the game on the Authorization button (if you already used one to authorize, just logout with this one, paste the new access token, and authorize again)
 
 When all the players for the game is joined, will be possible to start the game.
