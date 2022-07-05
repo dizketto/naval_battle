@@ -20,8 +20,8 @@ The current implementation adds some revisited rules:
 ## How to start the game service
 
 ### Requirements
-docker >= 20.10.12
-docker-compose >= 1.29.2
+- docker >= 20.10.12
+- docker-compose >= 1.29.2
 
 To run the whole infrastructure you can use the Makefile with one of its targets:
  - run_services_detached : runs in detached mode and if needed builds the services
@@ -32,4 +32,9 @@ To run the whole infrastructure you can use the Makefile with one of its targets
  ```
   make build_and_run_services_detached
  ```
+ 
+ ## Using the API
+ 
+ The documentation and testing of the API is available at its own swagger, reachable through:
+ `http://localhost:8000/docs`
  
