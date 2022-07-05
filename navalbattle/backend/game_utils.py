@@ -19,10 +19,8 @@ def trace_ship(ship: ShipUnitData) -> t.Set[t.Tuple]:
 
 
 def _overlaps(new_ship: ShipUnitData, existing_ship: t.List[t.Tuple]) -> bool:
-    print(existing_ship)
     existing_ship_coords = set([tuple(coord) for coord in existing_ship])
     new_ship_coords = trace_ship(new_ship)
-    print(new_ship_coords)
     if new_ship_coords.intersection(existing_ship_coords):
         return True
     return False
