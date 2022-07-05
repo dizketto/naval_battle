@@ -21,15 +21,16 @@ The current implementation adds some revisited rules:
 ## How to start the game service
 
 ### Requirements
-- docker >= 20.10.12
-- docker-compose >= 1.29.2
+- `docker >= 20.10.12`
+- `docker-compose >= 1.29.2`
 
 To run the whole infrastructure you can use the Makefile with one of its targets:
- - run_services_detached : runs in detached mode and if needed builds the services
- - build_and_run_services_detached : builds and run the services in detached mode
- - run_services : runs services NOT in detached mode
- - build_and_run_services : builds and run services NOT in detached mode
+ - `run_services_detached` : runs in detached mode and if needed builds the services
+ - `build_and_run_services_detached` : builds and run the services in detached mode
+ - `run_services` : runs services NOT in detached mode
+ - `build_and_run_services` : builds and run services NOT in detached mode
  
+ Ex.
  ```
   make build_and_run_services_detached
  ```
