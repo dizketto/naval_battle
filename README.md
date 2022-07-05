@@ -126,7 +126,7 @@ You can check the user scores chart using the `/v1/scores` endpoint.
 
 ## TODO
 
-A dedicated client would be worth to implement, based on Redis pub/sub to receive events and information about the game being played.
+A dedicated client would be worth to be implemented based on Redis pub/sub to receive events and information about the game being played.
 
 
 
