@@ -1,0 +1,106 @@
+services:
+  api:
+    build: ./navalbattle
+    image: api:0.1
+    container_name: api
+    command: "uvicorn api.main:app --host 0.0.0.0 --port 8000 --debug"
+    restart: always
+    ports:
+      - 8000:8000
+    volumes:
+      - ./navalbattle:/app
+
+    networks:
+      default:
+        ipv4_address: 192.168.0.140
+
+  mongodb:
+    image: mongo:5.0
+    container_name: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=vito
+      - MONGO_INITDB_ROOT_PASSWORD=S3cret
+    networks:
+      default:
+        ipv4_address: 192.168.0.141
+
+  cache_db:
+    image: "redis:alpine"
+    command: redis-server
+    container_name: cache_db
+    ports:
+      - "6379:6379"
+    volumes:
+      - red_data:/var/lib/redis
+      - $PWD/service_api/dbs/redis.conf:/usr/local/etc/redis/redis.conf
+
+    environment:
+      - REDIS_REPLICATION_MODE=master
+
+    networks:
+      default:
+        ipv4_address: 192.168.0.142
+
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: vito
+      POSTGRES_PASSWORD: vito
+      PGDATA: /data/postgres
+    volumes:
+       - postgres_data:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      default:
+        ipv4_address: 192.168.0.143
+
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+    volumes:
+        - queue_data:/var/lib/rabbitmq/
+        - log_data:/var/log/rabbitmq
+    networks:
+        default:
+          ipv4_address: 192.168.0.144
+
+  gameworker:
+    container_name: gameworker
+    build: ./navalbattle
+    command: ['celery', '-A', 'backend.game_tasks', 'worker', '--loglevel', 'INFO']
+    volumes:
+      - ./navalbattle:/app
+    depends_on:
+      - rabbitmq
+      - cache_db
+      - mongodb
+    networks:
+      default:
+        ipv4_address: 192.168.0.145
+
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 192.168.0.0/8
+
+
+
+volumes:
+  red_data:
+  mongo_data:
+  postgres_data:
+  queue_data:
+  log_data:
