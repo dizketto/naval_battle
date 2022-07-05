@@ -115,8 +115,13 @@ For convenience, there is a "cheating" endpoint that can show the board and the 
 ![Reveal](https://user-images.githubusercontent.com/58236349/177286800-2fd3ec75-e138-4c32-9326-4193f77ef6aa.png)
 
 
+#### Scores
+
+You can check the user scores chart using the `/v1/scores` endpoint.
 
 
+
+![scores](https://user-images.githubusercontent.com/58236349/177288260-ee7ce55e-86f7-40cd-98ee-525682745ed4.png)
 
 
 
