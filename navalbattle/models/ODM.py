@@ -44,8 +44,8 @@ class GameStatus(int, Enum):
 
 class GameSettings(BaseModel):
     players_number: int = pydField(le=4, gt=1)
-    board_width: int = pydField(le=10)
-    board_height: int = pydField(le=10)
+    board_width: int = pydField(le=10, ge=4)
+    board_height: int = pydField(le=10, ge=4)
 
     class Config:
         schema_extra = {
