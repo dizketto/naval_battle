@@ -2,6 +2,8 @@ import asyncio
 import json
 import typing as t
 
+from pydantic import ValidationError
+
 from api.const import (
     ALLOCATION_ERROR,
     ALLOCATON,
@@ -28,6 +30,7 @@ from fastapi.responses import JSONResponse
 from models import ODM
 from models.game_models import GameStage, ShipUnitData
 
+
 reusable_bearer = JWTBearer()
 router = APIRouter()
 simple_lock = asyncio.Lock()
@@ -41,13 +44,17 @@ async def post_new_game(
     hosting_user = await ODM.UserSchema.find_one(
         {"username": user_data.get("username")}
     )
-
-    new_game = ODM.Game(
-        settings=game_setting,
-        status=ODM.GameStatus.WAITING,
-        created_by=hosting_user,
-        players=[user_data.get("username")],
-    )
+    try:
+        new_game = ODM.Game(
+            settings=game_setting,
+            status=ODM.GameStatus.WAITING,
+            created_by=hosting_user,
+            players=[user_data.get("username")],
+        )
+    except ValidationError:
+        return JSONResponse(
+            status_code=403, content={"error": "no such registered user"}
+        )
 
     game = await new_game.save()
     game_token = await sign_jwt(
