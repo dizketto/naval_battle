@@ -7,7 +7,7 @@ import jwt
 from fastapi import HTTPException, Request
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from models import ODM
-from models.auth_models import UserLoginSchema
+from models.api_models import UserLoginSchema
 
 
 class JWTBearer(HTTPBearer):
