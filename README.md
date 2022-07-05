@@ -38,3 +38,5 @@ To run the whole infrastructure you can use the Makefile with one of its targets
  The documentation and testing of the API is available at its own swagger, reachable through:
  `http://localhost:8000/docs`
  
+ ![API SWAGGER](https://user-images.githubusercontent.com/58236349/177278846-47002a8c-e952-4cb7-a14e-10f6a64f99f9.png)
+
