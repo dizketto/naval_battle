@@ -30,10 +30,9 @@ To run the whole infrastructure you can use the Makefile with one of its targets
  - `run_services` : runs services NOT in detached mode
  - `build_and_run_services` : builds and run services NOT in detached mode
  
- Ex.
- ```
-  make build_and_run_services_detached
- ```
+ 
+ ex.
+ ```make build_and_run_services_detached```
  
 ## Using the API
  
